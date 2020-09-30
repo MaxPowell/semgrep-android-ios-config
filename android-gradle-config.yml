@@ -1,0 +1,14 @@
+rules:
+  - id: android-insecure-gradle
+    pattern-either:
+      - pattern-regex: release(\s)*(/\*[\s\S\n]*?\*/)*(\s)*\{(\w|\s|\.|/|\*|\\|-|"|\$|\(|\)|\[|\]|=|,|@|<|>|'|\||&)*FLAG_SECURE(\s)*'(\s)*,(\s)*"(\s)*false
+      - pattern-regex: release(\s)*(/\*[\s\S\n]*?\*/)*(\s)*\{(\w|\s|\.|/|\*|\\|-|"|\$|\(|\)|\[|\]|=|,|@|<|>|'|\||&)*CHECK_ROOT(\s)*'(\s)*,(\s)*"(\s)*false
+      - pattern-regex: release(\s)*(/\*[\s\S\n]*?\*/)*(\s)*\{(\w|\s|\.|/|\*|\\|-|"|\$|\(|\)|\[|\]|=|,|@|<|>|'|\||&)*SSL_PINNING(\s)*'(\s)*,(\s)*"(\s)*false
+
+    paths:
+      include:
+        - "build.gradle"
+
+    message: "Insecure build.gradle configuration detected"
+    languages: [none]
+    severity: WARNING
