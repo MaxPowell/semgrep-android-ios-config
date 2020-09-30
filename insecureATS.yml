@@ -1,0 +1,14 @@
+rules:
+  - id: ios-insecure-ats
+    pattern-either:
+      - pattern-regex: <(\s)*key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*NSAllowsArbitraryLoads(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*/key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*true(\s)*/(\s)*>
+      - pattern-regex: <(\s)*key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*NSAllowsArbitraryLoadsInWebContent(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*/key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*true(\s)*/(\s)*>
+      - pattern-regex: <(\s)*key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*NSAllowsLocalNetworking(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*/key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*true(\s)*/(\s)*>
+      - pattern-regex: <(\s)*key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*NSExceptionRequiresForwardSecrecy(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*/key(\s)*>(\s)*(<!--[\S\s\n]*?-->)*(\s)*<(\s)*false(\s)*/(\s)*>
+
+    paths:
+      include:
+        - "*.plist"
+    message: "Insecure ATS configuration detected"
+    languages: [none]
+    severity: WARNING

@@ -1,0 +1,36 @@
+rules:
+  - id: android-dangerous-permissions
+    pattern-either:
+      - pattern-regex: android.permission.ACCEPT_HANDOVER
+      - pattern-regex: android.permission.ACCESS_BACKGROUND_LOCATION
+      - pattern-regex: android.permission.ACCESS_COARSE_LOCATION
+      - pattern-regex: android.permission.ACCESS_FINE_LOCATION
+      - pattern-regex: android.permission.ACCESS_MEDIA_LOCATION
+      - pattern-regex: android.permission.ADD_VOICEMAIL
+      - pattern-regex: android.permission.ANSWER_PHONE_CALLS
+      - pattern-regex: android.permission.BODY_SENSORS
+      - pattern-regex: android.permission.CALL_PHONE
+      - pattern-regex: android.permission.CAMERA
+      - pattern-regex: android.permission.GET_ACCOUNTS
+      - pattern-regex: android.permission.PROCESS_OUTGOING_CALLS
+      - pattern-regex: android.permission.READ_CALL_LOG
+      - pattern-regex: android.permission.READ_EXTERNAL_STORAGE
+      - pattern-regex: android.permission.READ_PHONE_NUMBERS
+      - pattern-regex: android.permission.READ_PHONE_STATE
+      - pattern-regex: android.permission.READ_SMS
+      - pattern-regex: android.permission.RECEIVE_MMS
+      - pattern-regex: android.permission.RECEIVE_SMS
+      - pattern-regex: android.permission.RECEIVE_WAP_PUSH
+      - pattern-regex: android.permission.RECORD_AUDIO
+      - pattern-regex: android.permission.SEND_SMS
+      - pattern-regex: android.permission.USE_SIP
+      - pattern-regex: android.permission.WRITE_CALL_LOG
+      - pattern-regex: android.permission.WRITE_CONTACTS
+      - pattern-regex: android.permission.WRITE_EXTERNAL_STORAGE
+
+    paths:
+      include:
+        - "AndroidManifest.xml" 
+    message: "Dangerous android permissions have been detected"
+    languages: [none]
+    severity: WARNING

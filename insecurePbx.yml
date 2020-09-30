@@ -1,0 +1,10 @@
+rules:
+  - id: android-insecure-pbx
+    pattern-regex: Release(\s)*\*/(\s)*=(\s)*\{((\w|\s)+=(\w|\s|/\*|\*/|-|\.|\"|\$|\(|\)|\{|\}|\/|\\|,|@|<|>)*;?)*(\s)*SSL_PINNING_ENABLED(\s)*=(\s)*NO
+
+    paths:
+      include:
+        - "*.pbxproj"
+    message: "Insecure .pbxproj configuration detected"
+    languages: [none]
+    severity: WARNING
