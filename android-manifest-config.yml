@@ -34,3 +34,15 @@ rules:
     message: "Dangerous android permissions have been detected"
     languages: [none]
     severity: WARNING
+
+  - id: android-dangerous-flags
+    pattern-either:
+      - pattern-regex: android:usesCleartextTraffic(\s)*=(\s)*\"true
+      - pattern-regex: android:exported(\s)*=(\s)*\"true
+
+    paths:
+      include:
+        - "AndroidManifest.xml" 
+    message: "Dangerous flags have been detected"
+    languages: [none]
+    severity: WARNING
