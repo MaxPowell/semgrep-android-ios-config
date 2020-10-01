@@ -39,6 +39,8 @@ rules:
     pattern-either:
       - pattern-regex: android:usesCleartextTraffic(\s)*=(\s)*\"true
       - pattern-regex: android:exported(\s)*=(\s)*\"true
+      - pattern-regex: android:allowBackup(\s)*=(\s)*\"true
+      - pattern-regex: android:debuggable(\s)*=(\s)*\"true
 
     paths:
       include:
